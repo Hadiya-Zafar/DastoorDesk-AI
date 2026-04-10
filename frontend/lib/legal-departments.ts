@@ -24,7 +24,7 @@ export const legalDepartments: LegalDepartment[] = [
     name: "Property Disputes",
     description: "Land ownership, tenant rights, property registration, boundary disputes, and real estate matters.",
     iconName: "Building2",
-    color: "bg-blue-500/10 text-blue-600 border-blue-200",
+    color: "bg-primary/5 text-primary border-primary/20",
     examples: [
       "How do I register my property?",
       "What are my rights as a tenant?",
@@ -45,7 +45,7 @@ Always provide simplified explanations and guide users on possible legal actions
     name: "Cybercrime",
     description: "Online fraud, identity theft, cyberbullying, data breaches, and digital privacy violations.",
     iconName: "Shield",
-    color: "bg-red-500/10 text-red-600 border-red-200",
+    color: "bg-accent/5 text-accent border-accent/20",
     examples: [
       "Someone hacked my social media account",
       "I received a fraudulent message",
@@ -66,7 +66,7 @@ Guide users on how to report cybercrimes to appropriate authorities. Explain rel
     name: "Traffic Regulations",
     description: "Traffic violations, accident claims, license issues, vehicle registration, and road safety laws.",
     iconName: "Car",
-    color: "bg-amber-500/10 text-amber-600 border-amber-200",
+    color: "bg-primary/5 text-primary border-primary/20",
     examples: [
       "What to do after a road accident?",
       "How to contest a traffic challan?",
@@ -87,7 +87,7 @@ Provide clear guidance on traffic rules and legal procedures. Help users underst
     name: "Consumer Rights",
     description: "Product complaints, refund policies, unfair trade practices, and consumer protection laws.",
     iconName: "ShoppingCart",
-    color: "bg-green-500/10 text-green-600 border-green-200",
+    color: "bg-accent/5 text-accent border-accent/20",
     examples: [
       "I received a defective product",
       "The seller refuses to refund",
@@ -108,7 +108,7 @@ Guide users on how to file complaints and seek remedies. Explain consumer court 
     name: "Family Law",
     description: "Marriage, divorce, child custody, domestic violence, maintenance, and adoption procedures.",
     iconName: "Users",
-    color: "bg-pink-500/10 text-pink-600 border-pink-200",
+    color: "bg-primary/5 text-primary border-primary/20",
     examples: [
       "What is the divorce procedure?",
       "Child custody rights",
@@ -129,7 +129,7 @@ Be especially sensitive and empathetic. Provide information about support resour
     name: "Labor Law",
     description: "Employment rights, workplace harassment, salary disputes, wrongful termination, and labor unions.",
     iconName: "Briefcase",
-    color: "bg-indigo-500/10 text-indigo-600 border-indigo-200",
+    color: "bg-accent/5 text-accent border-accent/20",
     examples: [
       "My employer withheld my salary",
       "I was fired without notice",
@@ -150,7 +150,7 @@ Guide workers on their rights and how to file complaints with labor authorities.
     name: "Criminal Law",
     description: "FIR procedures, bail process, criminal complaints, police procedures, and fundamental rights.",
     iconName: "Landmark",
-    color: "bg-slate-500/10 text-slate-600 border-slate-200",
+    color: "bg-primary/5 text-primary border-primary/20",
     examples: [
       "How to file an FIR?",
       "What is the bail procedure?",
@@ -171,7 +171,7 @@ Explain criminal procedures clearly. Emphasize fundamental rights and the import
     name: "Constitutional Rights",
     description: "Fundamental rights, RTI applications, public interest litigation, and civic duties.",
     iconName: "Globe",
-    color: "bg-teal-500/10 text-teal-600 border-teal-200",
+    color: "bg-accent/5 text-accent border-accent/20",
     examples: [
       "What are my fundamental rights?",
       "How to file an RTI?",

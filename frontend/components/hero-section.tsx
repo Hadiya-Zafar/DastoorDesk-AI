@@ -38,7 +38,7 @@ export function HeroSection() {
             opacity: [0.1, 0.3, 0.1]
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute w-[500px] h-[500px] bg-purple-500/10 blur-[150px] rounded-full mix-blend-screen"
+          className="absolute w-[500px] h-[500px] bg-primary/20 blur-[150px] rounded-full mix-blend-screen"
         />
       </div>
 
@@ -63,7 +63,7 @@ export function HeroSection() {
             className="text-balance text-6xl font-medium tracking-tighter sm:text-7xl lg:text-8xl leading-[1.1] text-foreground"
           >
             Know Your Rights. <br className="hidden sm:block" />
-            <span className="bg-gradient-to-tr from-foreground via-primary to-accent bg-clip-text text-transparent opacity-90">
+            <span className="bg-gradient-to-tr from-primary via-accent to-primary bg-clip-text text-transparent opacity-90">
               Take Action.
             </span>
           </motion.h1>

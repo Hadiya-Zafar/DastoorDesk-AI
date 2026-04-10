@@ -51,13 +51,13 @@ export function HowItWorksSection() {
               >
                 {/* Intense glowing connector line */}
                 {index < steps.length - 1 && (
-                  <div className="absolute left-1/2 top-6 hidden h-[1px] w-full lg:block overflow-hidden bg-white/15">
+                  <div className="absolute left-1/2 top-6 hidden h-[1px] w-full lg:block overflow-hidden bg-white/5">
                     <motion.div
                       initial={{ scaleX: 0, originX: 0 }}
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 1.5, delay: 0.5 + index * 0.2, ease: "circOut" }}
-                      className="w-full h-full bg-gradient-to-r from-primary via-accent to-transparent shadow-[0_0_10px_var(--primary)]"
+                      className="w-full h-full bg-gradient-to-r from-primary via-accent to-transparent shadow-lg shadow-primary/30"
                     />
                   </div>
                 )}
@@ -65,10 +65,10 @@ export function HowItWorksSection() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, delay: index * 0.4, ease: "easeInOut" }}
-                  className="relative mx-auto mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-card/40 border border-white/10 text-primary shadow-[0_0_15px_rgba(var(--primary),0.1)] group-hover:bg-primary/10 group-hover:border-primary/40 transition-colors duration-500"
+                  className="relative mx-auto mb-8 flex h-14 w-14 items-center justify-center rounded-full bg-card/40 border border-white/10 text-primary shadow-lg shadow-primary/30 group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:shadow-xl group-hover:shadow-primary/50 transition-all duration-500"
                 >
                   <Icon className="h-8 w-8 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
-                  <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground backdrop-blur-md border border-white/20 text-[10px] font-bold tracking-widest shadow-[0_0_10px_rgba(var(--primary),0.5)]">
+                  <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground backdrop-blur-md border border-white/20 text-[10px] font-bold tracking-widest shadow-lg shadow-primary/60">
                     0{index + 1}
                   </span>
                 </motion.div>

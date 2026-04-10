@@ -61,7 +61,7 @@ export function EvidencePanel({ departmentId, isOpen, onClose }: EvidencePanelPr
   if (!isOpen || !evidence) return null
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md border-l border-border bg-background shadow-xl sm:w-96">
+    <div className="relative z-20 h-full w-[400px] border-l border-white/10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl shadow-2xl animate-in slide-in-from-right duration-500 ease-out">
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
           <div className="flex items-center gap-2">
@@ -94,15 +94,15 @@ export function EvidencePanel({ departmentId, isOpen, onClose }: EvidencePanelPr
           </div>
 
           <div className="mt-6">
-            <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-900 dark:bg-amber-950/30">
-              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+            <div className="flex items-start gap-2 rounded-lg border border-accent/20 bg-accent/5 p-3">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
               <div>
-                <h4 className="text-xs font-medium text-amber-900 dark:text-amber-100">
+                <h4 className="text-xs font-medium text-accent">
                   Important Notes
                 </h4>
                 <ul className="mt-2 space-y-1">
                   {evidence.importantNotes.map((note, index) => (
-                    <li key={index} className="text-xs text-amber-800 dark:text-amber-200">
+                    <li key={index} className="text-xs text-muted-foreground">
                       {note}
                     </li>
                   ))}
