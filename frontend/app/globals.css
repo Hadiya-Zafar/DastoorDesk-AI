@@ -138,6 +138,17 @@
   /* Custom shadow utility for glow effects */
   --drop-shadow-glow: 0 4px 30px var(--primary);
   --drop-shadow-glow-accent: 0 4px 30px var(--accent);
+
+  --font-urdu: var(--font-noto-urdu), serif;
+}
+
+.lang-ur {
+  font-family: var(--font-urdu) !important;
+  direction: rtl;
+}
+
+.lang-ur * {
+  text-align: right;
 }
 
 @layer base {
@@ -147,4 +158,21 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ── LogoIntro Animations ── */
+@keyframes dd-draw  { to { stroke-dashoffset: 0; } }
+@keyframes dd-fin   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dd-bloom { 0% { opacity: 0; letter-spacing: 0.8em; filter: blur(5px); } 100% { opacity: 1; letter-spacing: 0.32em; filter: blur(0px); } }
+@keyframes dd-line  { to { transform: scaleX(1); } }
+@keyframes dd-pulse { 0%, 100% { opacity: 0.05; transform: scale(1); } 50% { opacity: 0.12; transform: scale(1.1); } }
+
+@keyframes dd-picker-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0px); }
+}
+
+@keyframes dd-lang-glow {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.58 0.23 285 / 0); }
+  50%       { box-shadow: 0 0 28px 4px oklch(0.58 0.23 285 / 0.45); }
 }

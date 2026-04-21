@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono, Noto_Nastaliq_Urdu } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import ClientWrapper from "@/components/ClientWrapper"
+import { ClientWrapper } from "../components/ClientWrapper"
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,6 +12,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const notoNastaliqUrdu = Noto_Nastaliq_Urdu({
+  variable: "--font-noto-urdu",
+  subsets: ["arabic"],
+  weight: ["400", "700"],
 });
 export const metadata: Metadata = {
   title: 'Dastoor Desk - AI-Powered Legal Guidance',
@@ -37,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${notoNastaliqUrdu.variable} font-sans antialiased`}>
         {/* The ClientWrapper handles the LogoIntro animation and wrapping */}
         <ClientWrapper>
           {children}

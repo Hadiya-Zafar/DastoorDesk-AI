@@ -2,38 +2,41 @@
 
 import { MessageSquare, Brain, FileText, CheckCircle } from "lucide-react"
 import { motion } from "framer-motion"
-
-const steps = [
-  {
-    icon: MessageSquare,
-    title: "Describe Your Issue",
-    description: "Tell us about your legal problem in your own words. No legal jargon needed.",
-  },
-  {
-    icon: Brain,
-    title: "AI Analysis",
-    description: "Our AI analyzes your query and matches it with relevant legal knowledge.",
-  },
-  {
-    icon: FileText,
-    title: "Get Guidance",
-    description: "Receive simplified explanations of applicable laws and possible actions.",
-  },
-  {
-    icon: CheckCircle,
-    title: "Take Action",
-    description: "Know what evidence to collect and which authorities to approach.",
-  },
-]
+import { useLanguage } from "@/context/LanguageContext"
 
 export function HowItWorksSection() {
+  const { t } = useLanguage()
+
+  const steps = [
+    {
+      icon: MessageSquare,
+      titleKey: "hiw.step1.title" as const,
+      descKey:  "hiw.step1.desc"  as const,
+    },
+    {
+      icon: Brain,
+      titleKey: "hiw.step2.title" as const,
+      descKey:  "hiw.step2.desc"  as const,
+    },
+    {
+      icon: FileText,
+      titleKey: "hiw.step3.title" as const,
+      descKey:  "hiw.step3.desc"  as const,
+    },
+    {
+      icon: CheckCircle,
+      titleKey: "hiw.step4.title" as const,
+      descKey:  "hiw.step4.desc"  as const,
+    },
+  ]
+
   return (
     <section id="how-it-works" className="relative border-t border-border/40 bg-transparent py-24 sm:py-32 overflow-hidden">
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-medium tracking-tighter sm:text-5xl text-foreground">
-            How It Works
+            {t("hiw.heading")}
           </h2>
         </div>
 
@@ -49,7 +52,7 @@ export function HowItWorksSection() {
                 transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
                 className="relative text-center group"
               >
-                {/* Intense glowing connector line */}
+                {/* Animated connector line */}
                 {index < steps.length - 1 && (
                   <div className="absolute left-1/2 top-6 hidden h-[1px] w-full lg:block overflow-hidden bg-white/5">
                     <motion.div
@@ -72,8 +75,13 @@ export function HowItWorksSection() {
                     0{index + 1}
                   </span>
                 </motion.div>
-                <h3 className="mb-3 text-lg font-medium tracking-tight text-foreground">{step.title}</h3>
-                <p className="text-sm font-normal leading-relaxed text-muted-foreground">{step.description}</p>
+
+                <h3 className="mb-3 text-lg font-medium tracking-tight text-foreground">
+                  {t(step.titleKey)}
+                </h3>
+                <p className="text-sm font-normal leading-relaxed text-muted-foreground">
+                  {t(step.descKey)}
+                </p>
               </motion.div>
             )
           })}

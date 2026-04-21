@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { DepartmentCard } from "@/components/department-card"
 import { legalDepartments } from "@/lib/legal-departments"
+import { useLanguage } from "@/context/LanguageContext"
 
 const container = {
   hidden: { opacity: 0 },
@@ -18,6 +19,8 @@ const item = {
 }
 
 export function DepartmentsSection() {
+  const { t } = useLanguage()
+
   return (
     <section id="departments" className="relative py-16 sm:py-24 overflow-hidden">
       {/* Background glow */}
@@ -26,11 +29,10 @@ export function DepartmentsSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Legal Areas
+            {t("dept.heading")}
           </h2>
           <p className="mt-4 text-pretty text-lg text-muted-foreground">
-            Select a legal area to start a conversation with our AI assistant. 
-            Get simplified explanations and guidance tailored to your situation.
+            {t("dept.subtext")}
           </p>
         </div>
 

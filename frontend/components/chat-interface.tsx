@@ -10,6 +10,7 @@ import { askLegalAI } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 import type { LegalDepartment } from "@/lib/legal-departments";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ChatInterfaceProps {
   department: LegalDepartment;
@@ -19,6 +20,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { t, language } = useLanguage();
 
   // 🎤 VOICE INPUT
   const [isListening, setIsListening] = useState(false);
@@ -43,12 +45,16 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
       const utterance = new SpeechSynthesisUtterance(cleanText);
       utterance.rate = 0.9;
       utterance.pitch = 1;
+      // Use Urdu voice when language is Urdu
+      if (language === "ur") {
+        utterance.lang = "ur-PK";
+      }
 
       window.speechSynthesis.speak(utterance);
     }
   };
 
-  // Scroll
+  // Scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -66,7 +72,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
         const recognition = new SpeechRecognition();
         recognition.continuous = false;
         recognition.interimResults = true;
-        recognition.lang = "en-US";
+        recognition.lang = language === "ur" ? "ur-PK" : "en-US";
 
         recognition.onresult = (event: any) => {
           let transcript = "";
@@ -88,7 +94,8 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
         recognitionRef.current = recognition;
       }
     }
-  }, []);
+  // Re-init recognition when language changes so lang attribute stays correct
+  }, [language]);
 
   // 🎤 TOGGLE VOICE INPUT
   const toggleListening = () => {
@@ -97,8 +104,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
       recognitionRef.current.stop();
       setIsListening(false);
     } else {
-      const text = input.toLowerCase();
-      recognitionRef.current.lang = /[؀-ۿ]/.test(text) ? "ur-PK" : "en-US";
+      recognitionRef.current.lang = language === "ur" ? "ur-PK" : "en-US";
       recognitionRef.current.start();
       setIsListening(true);
     }
@@ -109,11 +115,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    const userMessage = {
-      role: "user",
-      content: input,
-    };
-
+    const userMessage = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true);
@@ -129,12 +131,16 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
     } catch (error) {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Error connecting to backend." },
+        { role: "assistant", content: t("chat.error") },
       ]);
     } finally {
       setIsLoading(false);
     }
   };
+
+  // Pick the correct department name for the placeholder
+  const deptName =
+    language === "ur" ? department.nameUr : department.name;
 
   return (
     <div className="flex h-full flex-col">
@@ -154,8 +160,8 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
               <div
                 className={`group relative max-w-[85%] rounded-2xl px-5 py-3.5 text-sm shadow-xl backdrop-blur-md border ${
                   message.role === "user"
-                    ? "bg-primary text-primary-foreground border-primary/20 rounded-tr-sm shadow-primary/20"
-                    : "bg-white/10 dark:bg-muted/10 text-foreground border-white/20 dark:border-white/5 rounded-tl-sm shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
+                    ? "bg-primary text-primary-foreground border-primary/20 rounded-se-sm shadow-primary/20"
+                    : "bg-white/10 dark:bg-muted/10 text-foreground border-white/20 dark:border-white/5 rounded-ss-sm shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
                 }`}
               >
                 <div className="flex justify-between items-start gap-4">
@@ -176,7 +182,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
                     <button
                       onClick={() => speakText(message.content)}
                       className="mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all p-1.5 hover:bg-primary/20 rounded-lg text-muted-foreground/60 hover:text-primary"
-                      title="Speak response"
+                      title={t("chat.speakResponse")}
                     >
                       <Volume2 className="h-4 w-4" />
                     </button>
@@ -187,7 +193,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
                   <div className="mt-4 pt-4 border-t border-white/10 dark:border-white/5 flex flex-col gap-2">
                     <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary/80">
                       <FileCheck className="h-3 w-3" />
-                      Required Evidence
+                      {t("chat.evidence")}
                     </div>
                     <ul className="grid grid-cols-1 gap-1.5">
                       {message.evidence.map((item: string, i: number) => (
@@ -206,7 +212,7 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
           {isLoading && (
             <div className="flex items-center gap-3 text-sm text-primary/80 animate-pulse px-2">
               <Loader2 className="h-4 w-4 animate-spin text-primary" />
-              <span className="font-medium tracking-wide">Synthesizing Pakistani Law...</span>
+              <span className="font-medium tracking-wide">{t("chat.loading")}</span>
             </div>
           )}
 
@@ -225,8 +231,8 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
                 size="icon"
                 onClick={toggleListening}
                 className={`h-11 w-11 rounded-xl transition-all duration-300 ${
-                  isListening 
-                    ? "bg-red-500/20 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse" 
+                  isListening
+                    ? "bg-red-500/20 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] animate-pulse"
                     : "text-foreground/40 hover:text-foreground hover:bg-white/10"
                 }`}
                 disabled={isLoading}
@@ -246,15 +252,15 @@ export function ChatInterface({ department }: ChatInterfaceProps) {
               }}
               placeholder={
                 isListening
-                  ? "I'm listening..."
-                  : `Describe your ${department.name.toLowerCase()} issue...`
+                  ? t("chat.listening")
+                  : `${t("chat.placeholder").replace("...", "")} ${deptName.toLowerCase()}...`
               }
               className="flex-1 min-h-[44px] max-h-32 resize-none border-0 bg-transparent py-3 px-3 text-sm placeholder:text-foreground/30 focus-visible:ring-0 leading-relaxed"
               disabled={isLoading}
             />
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={!input.trim() || isLoading}
               className="h-11 w-11 rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 active:scale-95"
             >

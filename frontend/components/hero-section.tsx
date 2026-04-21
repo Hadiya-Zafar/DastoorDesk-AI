@@ -2,8 +2,11 @@
 
 import { Scale, MessageSquare, Shield, Globe } from "lucide-react"
 import { motion } from "framer-motion"
+import { useLanguage } from "@/context/LanguageContext"
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[90vh] overflow-hidden bg-background">
       {/* Absolute Dark Fade Mask for seamless page transition */}
@@ -53,7 +56,7 @@ export function HeroSection() {
             className="mb-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-xl px-4 py-1.5 text-xs tracking-widest font-medium uppercase text-muted-foreground hover:border-white/20 hover:text-foreground transition-colors duration-300 cursor-default"
           >
             <Scale className="h-3 w-3" />
-            AI-Powered Legal Guidance
+            {t("hero.badge")}
           </motion.div>
 
           <motion.h1
@@ -62,9 +65,9 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
             className="text-balance text-6xl font-medium tracking-tighter sm:text-7xl lg:text-8xl leading-[1.1] text-foreground"
           >
-            Know Your Rights. <br className="hidden sm:block" />
+            {t("hero.headline1")} <br className="hidden sm:block" />
             <span className="bg-gradient-to-tr from-primary via-accent to-primary bg-clip-text text-transparent opacity-90">
-              Take Action.
+              {t("hero.headline2")}
             </span>
           </motion.h1>
 
@@ -74,8 +77,7 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="mx-auto mt-8 max-w-2xl text-pretty text-lg sm:text-xl font-light tracking-wide leading-relaxed text-muted-foreground/80"
           >
-            Dastoor Desk translates complex legislation into simple, actionable intelligence.
-            Instant guidance for property, cybercrime, and consumer rights.
+            {t("hero.subtext")}
           </motion.p>
 
           <motion.div
@@ -86,17 +88,17 @@ export function HeroSection() {
           >
             <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-default">
               <MessageSquare className="h-4 w-4" />
-              <span>Natural Language Chat</span>
+              <span>{t("hero.feature1")}</span>
             </div>
             <div className="h-4 w-px bg-white/10" />
             <div className="flex items-center gap-2 hover:text-accent transition-colors cursor-default">
               <Shield className="h-4 w-4" />
-              <span>Evidence Guidance</span>
+              <span>{t("hero.feature2")}</span>
             </div>
             <div className="h-4 w-px bg-white/10" />
             <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-default">
               <Globe className="h-4 w-4" />
-              <span>Multilingual Support</span>
+              <span>{t("hero.feature3")}</span>
             </div>
           </motion.div>
         </div>

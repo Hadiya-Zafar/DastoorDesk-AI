@@ -14,29 +14,39 @@ export type EvidenceIconName =
 export interface EvidenceType {
   id: string
   name: string
+  nameUr: string
   description: string
+  descriptionUr: string
   iconName: EvidenceIconName
   tips: string[]
+  tipsUr: string[]
 }
 
 export interface DepartmentEvidence {
   departmentId: string
   title: string
+  titleUr: string
   description: string
+  descriptionUr: string
   evidenceTypes: EvidenceType[]
   importantNotes: string[]
+  importantNotesUr: string[]
 }
 
 export const evidenceGuidance: DepartmentEvidence[] = [
   {
     departmentId: "property",
     title: "Property Dispute Evidence",
+    titleUr: "جائیداد کے تنازع کے ثبوت",
     description: "Documents and records needed for property-related legal matters.",
+    descriptionUr: "جائیداد سے متعلق قانونی معاملات کے لیے درکار دستاویزات اور ریکارڈ۔",
     evidenceTypes: [
       {
         id: "property-docs",
         name: "Property Documents",
+        nameUr: "جائیداد کے دستاویزات",
         description: "Ownership proof and registration papers",
+        descriptionUr: "ملکیت کا ثبوت اور رجسٹریشن کے کاغذات",
         iconName: "FileText",
         tips: [
           "Sale deed or title deed",
@@ -45,11 +55,20 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Mutation records",
           "Previous ownership chain documents",
         ],
+        tipsUr: [
+          "بیع نامہ یا ٹائٹل ڈیڈ",
+          "پراپرٹی رجسٹریشن سرٹیفکیٹ",
+          "اینکمبرنس سرٹیفکیٹ (EC)",
+          "انتقال (Mutation) کے ریکارڈ",
+          "سابقہ ملکیت کے سلسلہ وار دستاویزات",
+        ],
       },
       {
         id: "photos",
         name: "Photographs",
+        nameUr: "تصاویر",
         description: "Visual evidence of the property",
+        descriptionUr: "جائیداد کا بصری ثبوت",
         iconName: "Camera",
         tips: [
           "Current property photos with timestamps",
@@ -57,11 +76,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Evidence of encroachment if any",
           "Condition of property before/after",
         ],
+        tipsUr: [
+          "تاریخ اور وقت کے ساتھ جائیداد کی تازہ ترین تصاویر",
+          "حدود کے نشانات ظاہر کرنے والی تصاویر",
+          "اگر کوئی قبضہ (encroachment) ہے تو اس کا ثبوت",
+          "جائیداد کی پہلے اور بعد کی صورتحال",
+        ],
       },
       {
         id: "correspondence",
         name: "Communication Records",
+        nameUr: "مراسلات کا ریکارڈ",
         description: "Written exchanges with other parties",
+        descriptionUr: "دوسرے فریقین کے ساتھ تحریری تبادلہ",
         iconName: "MessageSquare",
         tips: [
           "Letters exchanged with other party",
@@ -69,17 +96,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Email communications",
           "WhatsApp or SMS messages",
         ],
+        tipsUr: [
+          "دوسرے فریق کے ساتھ تبادلہ خیال کیے گئے خطوط",
+          "بھیجے گئے یا موصول ہونے والے نوٹس",
+          "ای میل کے ذریعے خط و کتابت",
+          "واٹس ایپ یا ایس ایم ایس پیغامات",
+        ],
       },
       {
         id: "payments",
         name: "Payment Records",
+        nameUr: "ادائیگیوں کا ریکارڈ",
         description: "Financial transactions related to property",
+        descriptionUr: "جائیداد سے متعلق مالی لین دین",
         iconName: "Receipt",
         tips: [
           "Bank transaction receipts",
           "Payment receipts for property",
           "Tax payment records",
           "Maintenance fee receipts",
+        ],
+        tipsUr: [
+          "بینک ٹرانزیکشن کی رسیدیں",
+          "جائیداد کی ادائیگی کی رسیدیں",
+          "ٹیکس کی ادائیگی کا ریکارڈ",
+          "مینٹیننس فیس کی رسیدیں",
         ],
       },
     ],
@@ -89,16 +130,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Maintain a timeline of all events",
       "Preserve all communication records",
     ],
+    importantNotesUr: [
+      "اصل دستاویزات محفوظ رکھیں؛ تصدیق شدہ نقول جمع کروائیں",
+      "اگر ضرورت ہو تو دستاویزات کو نوٹری سے تصدیق کروائیں",
+      "تمام واقعات کا ٹائم لائن (تسلسل) برقرار رکھیں",
+      "مراسلات کے تمام ریکارڈ محفوظ رکھیں",
+    ],
   },
   {
     departmentId: "cybercrime",
     title: "Cybercrime Evidence",
+    titleUr: "سائبر کرائم کے ثبوت",
     description: "Digital evidence for online fraud, harassment, and cyber offenses.",
+    descriptionUr: "آن لائن فراڈ، ہراساں کرنے اور سائبر جرائم کے لیے ڈیجیٹل ثبوت۔",
     evidenceTypes: [
       {
         id: "screenshots",
         name: "Screenshots",
+        nameUr: "اسکرین شاٹس",
         description: "Capture of digital evidence",
+        descriptionUr: "ڈیجیٹل ثبوت کا عکس",
         iconName: "Smartphone",
         tips: [
           "Full page screenshots with URL visible",
@@ -106,11 +157,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Screenshot of profile/account involved",
           "Capture before content is deleted",
         ],
+        tipsUr: [
+          "یو آر ایل (URL) کے ساتھ پورے صفحے کا اسکرین شاٹ",
+          "اسکرین شاٹس میں تاریخ اور وقت شامل کریں",
+          "متعلقہ پروفائل یا اکاؤنٹ کا اسکرین شاٹ",
+          "مواد حذف ہونے سے پہلے محفوظ کریں",
+        ],
       },
       {
         id: "emails",
         name: "Email Records",
+        nameUr: "ای میل ریکارڈ",
         description: "Suspicious or threatening emails",
+        descriptionUr: "مشکوک یا دھمکی آمیز ای میلز",
         iconName: "Mail",
         tips: [
           "Download complete email with headers",
@@ -118,11 +177,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Include sender details",
           "Screenshot email if deletion is possible",
         ],
+        tipsUr: [
+          "ہیڈرز کے ساتھ مکمل ای میل ڈاؤن لوڈ کریں",
+          "پی ڈی ایف (PDF) یا ای ایم ایل (EML) فارمیٹ میں محفوظ کریں",
+          "بھیجنے والے کی تفصیلات شامل کریں",
+          "اگر حذف ہونے کا خطرہ ہو تو ای میل کا اسکرین شاٹ لیں",
+        ],
       },
       {
         id: "transactions",
         name: "Transaction Details",
+        nameUr: "لین دین کی تفصیلات",
         description: "Financial fraud evidence",
+        descriptionUr: "مالی فراڈ کا ثبوت",
         iconName: "CreditCard",
         tips: [
           "Bank statements showing fraudulent transactions",
@@ -130,17 +197,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Wallet transaction records",
           "Account details of fraudster if available",
         ],
+        tipsUr: [
+          "فراڈ پر مبنی لین دین ظاہر کرنے والے بینک اسٹیٹمنٹس",
+          "ادائیگی کی ایپ کی ٹرانزیکشن ہسٹری",
+          "والٹ ٹرانزیکشن ریکارڈز",
+          "اگر دستیاب ہو تو فراڈ کرنے والے کے اکاؤنٹ کی تفصیلات",
+        ],
       },
       {
         id: "messages",
         name: "Message Records",
+        nameUr: "پیغامات کا ریکارڈ",
         description: "Chat and messaging evidence",
+        descriptionUr: "چیٹ اور میسجنگ کا ثبوت",
         iconName: "MessageSquare",
         tips: [
           "Export chat history if possible",
           "Screenshot conversations with timestamps",
           "Save voice notes separately",
           "Note profile names and IDs",
+        ],
+        tipsUr: [
+          "اگر ممکن ہو تو چیٹ ہسٹری ایکسپورٹ کریں",
+          "ٹائم اسٹیمپ کے ساتھ گفتگو کے اسکرین شاٹس لیں",
+          "وائس نوٹس کو الگ سے محفوظ کریں",
+          "پروفائل کے نام اور آئی ڈی نوٹ کریں",
         ],
       },
     ],
@@ -150,16 +231,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Report to cybercrime.gov.in portal",
       "Keep copies on multiple devices/cloud",
     ],
+    importantNotesUr: [
+      "اپنے آلات سے کوئی بھی ثبوت حذف نہ کریں",
+      "بہترین نتائج کے لیے 24 سے 48 گھنٹوں کے اندر شکایت درج کریں",
+      "متعلقہ سائبر کرائم پورٹل یا تھانے میں رپورٹ کریں",
+      "متعدد آلات یا کلاؤڈ پر کاپیاں رکھیں",
+    ],
   },
   {
     departmentId: "traffic",
     title: "Traffic Incident Evidence",
+    titleUr: "ٹریفک حادثے کے ثبوت",
     description: "Documentation needed for accidents and traffic violations.",
+    descriptionUr: "حادثات اور ٹریفک قوانین کی خلاف ورزیوں کے لیے درکار دستاویزات۔",
     evidenceTypes: [
       {
         id: "scene-photos",
         name: "Accident Scene Photos",
+        nameUr: "حادثے کی جگہ کی تصاویر",
         description: "Visual documentation of the incident",
+        descriptionUr: "واقعے کی بصری دستاویزات",
         iconName: "Camera",
         tips: [
           "Photos of all vehicles involved",
@@ -167,11 +258,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Road conditions and traffic signs",
           "Skid marks or debris",
         ],
+        tipsUr: [
+          "شامل تمام گاڑیوں کی تصاویر",
+          "گاڑیوں کے نقصان کی مختلف زاویوں سے تصاویر",
+          "سڑک کی صورتحال اور ٹریفک کے نشانات",
+          "ٹائروں کے نشانات یا ملبہ",
+        ],
       },
       {
         id: "videos",
         name: "Video Evidence",
+        nameUr: "ویڈیو ثبوت",
         description: "CCTV or dashcam footage",
+        descriptionUr: "سی سی ٹی وی یا ڈیش کیم فوٹیج",
         iconName: "Video",
         tips: [
           "Dashcam footage if available",
@@ -179,11 +278,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Traffic camera footage through police",
           "Witness recorded videos",
         ],
+        tipsUr: [
+          "اگر دستیاب ہو تو ڈیش کیم فوٹیج",
+          "قریبی دکانوں سے سی سی ٹی وی فوٹیج کی درخواست کریں",
+          "پولیس کے ذریعے ٹریفک کیمرے کی فوٹیج حاصل کریں",
+          "گواہوں کی بنائی ہوئی ویڈیوز",
+        ],
       },
       {
         id: "witness",
         name: "Witness Information",
+        nameUr: "گواہ کی معلومات",
         description: "Contact details of eyewitnesses",
+        descriptionUr: "عینی شاہدین کے رابطے کی تفصیلات",
         iconName: "User",
         tips: [
           "Name and contact of witnesses",
@@ -191,17 +298,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Contact info of other drivers",
           "Traffic police officer badge numbers",
         ],
+        tipsUr: [
+          "گواہوں کے نام اور رابطے",
+          "اگر ممکن ہو تو تحریری بیانات",
+          "دوسرے ڈرائیوروں کے رابطے کی معلومات",
+          "ٹریفک پولیس آفیسر کے بیج نمبر",
+        ],
       },
       {
         id: "location",
         name: "Location Details",
+        nameUr: "جگہ کی تفصیلات",
         description: "Geographic information",
+        descriptionUr: "جغرافیائی معلومات",
         iconName: "MapPin",
         tips: [
           "Exact GPS coordinates",
           "Landmark references",
           "Note the road name and area",
           "Date, time, and weather conditions",
+        ],
+        tipsUr: [
+          "درست GPS کوآرڈینیٹ",
+          "مشہور جگہوں کے حوالے",
+          "سڑک کا نام اور علاقہ نوٹ کریں",
+          "تاریخ، وقت اور موسم کی صورتحال",
         ],
       },
     ],
@@ -211,16 +332,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Get MLC (Medico Legal Certificate) if injured",
       "Note vehicle registration numbers of all parties",
     ],
+    importantNotesUr: [
+      "رپورٹ کرنے کے فوراً بعد FIR کی کاپی حاصل کریں",
+      "پولیس کے آنے سے پہلے گاڑیاں نہ ہٹائیں (اگر محفوظ ہو)",
+      "اگر زخمی ہوں تو MLC (میڈیکو لیگل سرٹیفکیٹ) حاصل کریں",
+      "تمام فریقین کی گاڑیوں کے رجسٹریشن نمبر نوٹ کریں",
+    ],
   },
   {
     departmentId: "consumer",
     title: "Consumer Complaint Evidence",
+    titleUr: "صارفین کی شکایت کے ثبوت",
     description: "Documentation for product/service complaints.",
+    descriptionUr: "مصنوعات یا خدمات کی شکایات کے لیے دستاویزات۔",
     evidenceTypes: [
       {
         id: "purchase-proof",
         name: "Purchase Proof",
+        nameUr: "خریداری کا ثبوت",
         description: "Evidence of transaction",
+        descriptionUr: "لین دین کا ثبوت",
         iconName: "Receipt",
         tips: [
           "Original purchase receipt/invoice",
@@ -228,11 +359,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Payment transaction proof",
           "Warranty card if applicable",
         ],
+        tipsUr: [
+          "خریداری کی اصل رسید یا انوائس",
+          "آن لائن آرڈر کی تصدیق",
+          "ادائیگی کے لین دین کا ثبوت",
+          "وارنٹی کارڈ (اگر لاگو ہو)",
+        ],
       },
       {
         id: "product-evidence",
         name: "Product Evidence",
+        nameUr: "مصنوعات کا ثبوت",
         description: "Documentation of defective product",
+        descriptionUr: "ناقص مصنوعات کی دستاویزات",
         iconName: "Camera",
         tips: [
           "Photos of defective product",
@@ -240,11 +379,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Original packaging with batch/serial number",
           "Before and after comparison if applicable",
         ],
+        tipsUr: [
+          "ناقص مصنوعات کی تصاویر",
+          "خرابی ظاہر کرنے والی ویڈیو",
+          "بیچ یا سیریل نمبر کے ساتھ اصل پیکجنگ",
+          "اگر ممکن ہو تو پہلے اور بعد کا موازنہ",
+        ],
       },
       {
         id: "communication",
         name: "Seller Communication",
+        nameUr: "فروخت کنندہ سے رابطہ",
         description: "Record of complaints made",
+        descriptionUr: "کی گئی شکایات کا ریکارڈ",
         iconName: "MessageSquare",
         tips: [
           "Complaint emails to company",
@@ -252,17 +399,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Call recordings if legal",
           "Written complaint copies",
         ],
+        tipsUr: [
+          "کمپنی کو بھیجی گئی شکایتی ای میلز",
+          "کسٹمر سروس چیٹ کے ریکارڈ",
+          "کال ریکارڈنگ (اگر قانونی ہو)",
+          "تحریری شکایت کی نقول",
+        ],
       },
       {
         id: "timeline",
         name: "Timeline Records",
+        nameUr: "وقت کا ریکارڈ",
         description: "Chronology of events",
+        descriptionUr: "واقعات کا تسلسل",
         iconName: "Clock",
         tips: [
           "Date of purchase",
           "Date defect was noticed",
           "Dates of complaints made",
           "Response timeline from seller",
+        ],
+        tipsUr: [
+          "خریداری کی تاریخ",
+          "خرابی محسوس ہونے کی تاریخ",
+          "شکایات درج کروانے کی تاریخیں",
+          "فروخت کنندہ کی طرف سے جواب کا وقت",
         ],
       },
     ],
@@ -272,16 +433,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Keep all original documents safe",
       "Consumer forum filing fee is nominal",
     ],
+    importantNotesUr: [
+      "خریداری کے 2 سال کے اندر شکایت درج کریں",
+      "رجسٹرڈ ڈاک کے ذریعے تحریری شکایت بھیجیں",
+      "تمام اصل دستاویزات محفوظ رکھیں",
+      "صارفین کے فورم کی فائلنگ فیس نہ ہونے کے برابر ہے",
+    ],
   },
   {
     departmentId: "family",
     title: "Family Law Evidence",
+    titleUr: "خاندانی قانون کے ثبوت",
     description: "Documentation for divorce, custody, and domestic matters.",
+    descriptionUr: "طلاق، حضانت (custody) اور گھریلو معاملات کے لیے دستاویزات۔",
     evidenceTypes: [
       {
         id: "marriage-docs",
         name: "Marriage Documents",
+        nameUr: "نکاح کے دستاویزات",
         description: "Proof of marriage",
+        descriptionUr: "نکاح کا ثبوت",
         iconName: "FileText",
         tips: [
           "Marriage certificate",
@@ -289,11 +460,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Invitation cards",
           "Joint account documents",
         ],
+        tipsUr: [
+          "نکاح نامہ یا رجسٹریشن سرٹیفکیٹ",
+          "شادی کی تصاویر",
+          "دعوت نامے (Wedding cards)",
+          "مشترکہ بینک اکاؤنٹس کی دستاویزات",
+        ],
       },
       {
         id: "financial",
         name: "Financial Records",
+        nameUr: "مالی ریکارڈ",
         description: "Income and asset documentation",
+        descriptionUr: "آمدنی اور اثاثوں کی دستاویزات",
         iconName: "CreditCard",
         tips: [
           "Salary slips and bank statements",
@@ -301,11 +480,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Tax returns",
           "Joint investments records",
         ],
+        tipsUr: [
+          "تنخواہ کی سلپس اور بینک اسٹیٹمنٹس",
+          "جائیداد کے دستاویزات",
+          "ٹیکس گوشوارے (Tax returns)",
+          "مشترکہ سرمایہ کاری کا ریکارڈ",
+        ],
       },
       {
         id: "communication-evidence",
         name: "Communication Evidence",
+        nameUr: "رابطے کا ثبوت",
         description: "Record of interactions",
+        descriptionUr: "بات چیت کا ریکارڈ",
         iconName: "MessageSquare",
         tips: [
           "Messages showing behavior",
@@ -313,17 +500,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Call records if relevant",
           "Witness statements",
         ],
+        tipsUr: [
+          "رویہ ظاہر کرنے والے پیغامات",
+          "ای میل کے ذریعے خط و کتابت",
+          "اگر متعلقہ ہو تو کال ریکارڈز",
+          "گواہوں کے بیانات",
+        ],
       },
       {
         id: "child-evidence",
         name: "Child-Related Documents",
+        nameUr: "بچوں سے متعلق دستاویزات",
         description: "For custody matters",
+        descriptionUr: "حضانت (custody) کے معاملات کے لیے",
         iconName: "User",
         tips: [
           "Birth certificates",
           "School records and report cards",
           "Medical records",
           "Photos showing care and involvement",
+        ],
+        tipsUr: [
+          "پیدائشی سرٹیفکیٹ",
+          "اسکول کے ریکارڈ اور رپورٹ کارڈز",
+          "طبی (Medical) ریکارڈز",
+          "بچوں کی دیکھ بھال اور شمولیت ظاہر کرنے والی تصاویر",
         ],
       },
     ],
@@ -333,16 +534,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Financial evidence is crucial for maintenance claims",
       "Seek mediation before litigation when possible",
     ],
+    importantNotesUr: [
+      "گھریلو تشدد کے کیسز: DIR (ڈومیسٹک انسیڈنٹ رپورٹ) فائل کریں",
+      "اگر ضرورت ہو تو زیادتی (cruelty) کے ثبوت محفوظ رکھیں",
+      "خرچہ (maintenance) کے دعووں کے لیے مالی ثبوت بہت اہم ہیں",
+      "ممکن ہو تو قانونی چارہ جوئی سے پہلے ثالثی (mediation) کی کوشش کریں",
+    ],
   },
   {
     departmentId: "labor",
     title: "Labor Dispute Evidence",
+    titleUr: "لیبر تنازعات کے ثبوت",
     description: "Employment-related documentation.",
+    descriptionUr: "ملازمت سے متعلق دستاویزات۔",
     evidenceTypes: [
       {
         id: "employment-docs",
         name: "Employment Documents",
+        nameUr: "ملازمت کے دستاویزات",
         description: "Proof of employment",
+        descriptionUr: "ملازمت کا ثبوت",
         iconName: "FileText",
         tips: [
           "Appointment letter",
@@ -350,11 +561,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "ID card or access card",
           "Offer letter and acceptance",
         ],
+        tipsUr: [
+          "تقرری کا خط (Appointment letter)",
+          "ملازمت کا معاہدہ",
+          "شناختی کارڈ یا ایکسیس کارڈ",
+          "آفر لیٹر اور اس کی قبولیت",
+        ],
       },
       {
         id: "salary-records",
         name: "Salary Records",
+        nameUr: "تنخواہ کا ریکارڈ",
         description: "Payment documentation",
+        descriptionUr: "ادائیگی کی دستاویزات",
         iconName: "CreditCard",
         tips: [
           "Salary slips/pay stubs",
@@ -362,11 +581,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Tax deduction certificates",
           "PF/ESI contribution records",
         ],
+        tipsUr: [
+          "تنخواہ کی سلپس",
+          "تنخواہ کی منتقلی ظاہر کرنے والے بینک اسٹیٹمنٹس",
+          "ٹیکس کٹوتی کے سرٹیفکیٹ",
+          "PF/ESI وغیرہ میں کٹوتی کا ریکارڈ",
+        ],
       },
       {
         id: "communication-work",
         name: "Work Communication",
+        nameUr: "دفتری مراسلات",
         description: "Official correspondence",
+        descriptionUr: "سرکاری خط و کتابت",
         iconName: "Mail",
         tips: [
           "Official emails from employer",
@@ -374,17 +601,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Performance reviews",
           "Termination letter if applicable",
         ],
+        tipsUr: [
+          "مالک یا کمپنی کی طرف سے سرکاری ای میلز",
+          "وارننگ لیٹرز یا نوٹس",
+          "کارکردگی کی رپورٹیں (Performance reviews)",
+          "برطرفی کا خط (اگر لاگو ہو)",
+        ],
       },
       {
         id: "workplace-evidence",
         name: "Workplace Evidence",
+        nameUr: "کام کی جگہ کا ثبوت",
         description: "Documentation of incidents",
+        descriptionUr: "واقعات کی دستاویزات",
         iconName: "Camera",
         tips: [
           "Photos/videos of unsafe conditions",
           "Harassment evidence if applicable",
           "Attendance records",
           "Colleague witness statements",
+        ],
+        tipsUr: [
+          "غیر محفوظ حالات کی تصاویر یا ویڈیوز",
+          "ہراساں کیے جانے کا ثبوت (اگر لاگو ہو)",
+          "حاضری کا ریکارڈ",
+          "ساتھی ملازمین کے بیانات",
         ],
       },
     ],
@@ -394,16 +635,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Keep record of verbal communications via email confirmation",
       "PF disputes can be filed online on EPFO portal",
     ],
+    importantNotesUr: [
+      "مقررہ مدت کے اندر لیبر کمشنر کے پاس شکایت درج کریں",
+      "آجر کو فراہم کردہ تمام دستاویزات کی کاپیاں محفوظ رکھیں",
+      "زبانی بات چیت کا ریکارڈ ای میل کے ذریعے کنفرم کر کے رکھیں",
+      "PF کے تنازعات متعلقہ پورٹل پر آن لائن فائل کیے جا سکتے ہیں",
+    ],
   },
   {
     departmentId: "criminal",
     title: "Criminal Case Evidence",
+    titleUr: "فوجداری کیس کے ثبوت",
     description: "Evidence for criminal complaints and FIR.",
+    descriptionUr: "فوجداری شکایات اور FIR کے لیے ثبوت۔",
     evidenceTypes: [
       {
         id: "incident-docs",
         name: "Incident Documentation",
+        nameUr: "واقعے کی دستاویزات",
         description: "Record of the criminal act",
+        descriptionUr: "مجرمانہ فعل کا ریکارڈ",
         iconName: "FileText",
         tips: [
           "Written account of incident",
@@ -411,11 +662,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Names of persons involved",
           "Sequence of events",
         ],
+        tipsUr: [
+          "واقعے کا تحریری بیان",
+          "وقت، تاریخ اور مقام کی تفصیلات",
+          "ملوث افراد کے نام",
+          "واقعات کا تسلسل",
+        ],
       },
       {
         id: "physical-evidence",
         name: "Physical Evidence",
+        nameUr: "جسمانی یا مادی ثبوت",
         description: "Tangible proof",
+        descriptionUr: "ٹھوس ثبوت",
         iconName: "Camera",
         tips: [
           "Photos of injuries or damage",
@@ -423,11 +682,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Medical reports of injuries",
           "Damaged property photos",
         ],
+        tipsUr: [
+          "زخموں یا نقصان کی تصاویر",
+          "کسی بھی مادی ثبوت کو محفوظ کریں",
+          "زخموں کی میڈیکل رپورٹیں",
+          "تباہ شدہ جائیداد کی تصاویر",
+        ],
       },
       {
         id: "witness-info",
         name: "Witness Information",
+        nameUr: "گواہوں کی معلومات",
         description: "Eyewitness details",
+        descriptionUr: "عینی شاہدین کی تفصیلات",
         iconName: "User",
         tips: [
           "Names and contacts of witnesses",
@@ -435,17 +702,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Video/audio recordings if any",
           "CCTV footage locations",
         ],
+        tipsUr: [
+          "گواہوں کے نام اور رابطے",
+          "تحریری بیانات",
+          "اگر موجود ہو تو ویڈیو یا آڈیو ریکارڈنگ",
+          "سی سی ٹی وی کیمروں کی لوکیشنز",
+        ],
       },
       {
         id: "digital-evidence",
         name: "Digital Evidence",
+        nameUr: "ڈیجیٹل ثبوت",
         description: "Electronic records",
+        descriptionUr: "الیکٹرانک ریکارڈ",
         iconName: "Smartphone",
         tips: [
           "Call records",
           "Messages and chats",
           "Location data",
           "Social media posts",
+        ],
+        tipsUr: [
+          "کال ریکارڈز",
+          "پیغامات اور چیٹس",
+          "لوکیشن ڈیٹا",
+          "سوشل میڈیا پوسٹس",
         ],
       },
     ],
@@ -455,16 +736,26 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "Medical examination within 24 hours for assault cases",
       "Right to free legal aid if unable to afford lawyer",
     ],
+    importantNotesUr: [
+      "زیرو FIR کسی بھی تھانے میں درج کی جا سکتی ہے",
+      "FIR کی کاپی حاصل کریں اور FIR نمبر نوٹ کریں",
+      "حملے کے کیسز میں 24 گھنٹوں کے اندر طبی معائنہ کروائیں",
+      "وکیل کی استطاعت نہ ہونے کی صورت میں مفت قانونی امداد کا حق",
+    ],
   },
   {
     departmentId: "constitutional",
     title: "Constitutional Rights Evidence",
+    titleUr: "آئینی حقوق کے ثبوت",
     description: "Documentation for rights violations and RTI.",
+    descriptionUr: "حقوق کی خلاف ورزی اور RTI کے لیے دستاویزات۔",
     evidenceTypes: [
       {
         id: "rti-docs",
         name: "RTI Documents",
+        nameUr: "RTI دستاویزات",
         description: "For Right to Information",
+        descriptionUr: "معلومات تک رسائی کے حق کے لیے",
         iconName: "FileText",
         tips: [
           "RTI application copy with receipt",
@@ -472,11 +763,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Public authority details",
           "Specific information sought",
         ],
+        tipsUr: [
+          "رسید کے ساتھ RTI درخواست کی کاپی",
+          "سابقہ خط و کتابت (اگر کوئی ہو)",
+          "متعلقہ سرکاری ادارے کی تفصیلات",
+          "مطلوبہ مخصوص معلومات",
+        ],
       },
       {
         id: "violation-proof",
         name: "Rights Violation Proof",
+        nameUr: "حقوق کی خلاف ورزی کا ثبوت",
         description: "Evidence of violation",
+        descriptionUr: "خلاف ورزی کا ثبوت",
         iconName: "Camera",
         tips: [
           "Photos/videos of incident",
@@ -484,11 +783,19 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Official communications",
           "News reports if applicable",
         ],
+        tipsUr: [
+          "واقعے کی تصاویر یا ویڈیوز",
+          "گواہوں کے بیانات",
+          "سرکاری مراسلات",
+          "اخبارات کی خبریں (اگر لاگو ہو)",
+        ],
       },
       {
         id: "official-response",
         name: "Official Responses",
+        nameUr: "سرکاری جوابات",
         description: "Government communications",
+        descriptionUr: "حکومتی مراسلات",
         iconName: "Mail",
         tips: [
           "Replies received from authorities",
@@ -496,17 +803,31 @@ export const evidenceGuidance: DepartmentEvidence[] = [
           "Appeal correspondence",
           "Timeline of responses",
         ],
+        tipsUr: [
+          "حکام کی طرف سے موصولہ جوابات",
+          "مسترد کیے جانے والے خطوط (اگر کوئی ہوں)",
+          "اپیل سے متعلق خط و کتابت",
+          "جوابات کا ٹائم لائن",
+        ],
       },
       {
         id: "supporting-docs",
         name: "Supporting Documents",
+        nameUr: "معاون دستاویزات",
         description: "Additional evidence",
+        descriptionUr: "اضافی ثبوت",
         iconName: "FileText",
         tips: [
           "Legal provisions being violated",
           "Similar case precedents",
           "Expert opinions if available",
           "Media coverage",
+        ],
+        tipsUr: [
+          "خلاف ورزی کیے جانے والے قانونی دفعات",
+          "اسی طرح کے سابقہ کیسز کے حوالے",
+          "ماہرین کی آراء (اگر دستیاب ہوں)",
+          "میڈیا کوریج",
         ],
       },
     ],
@@ -515,6 +836,12 @@ export const evidenceGuidance: DepartmentEvidence[] = [
       "First appeal to senior officer, then Information Commission",
       "PIL can be filed directly in High Court or Supreme Court",
       "Keep all postal receipts and acknowledgments",
+    ],
+    importantNotesUr: [
+      "RTI کا جواب 30 دن کے اندر فراہم کیا جانا ضروری ہے",
+      "پہلی اپیل اعلیٰ افسر کو، پھر انفارمیشن کمیشن کو کریں",
+      "عوامی مفاد کی مقدمہ بازی (PIL) براہ راست ہائی کورٹ یا سپریم کورٹ میں کی جا سکتی ہے",
+      "ڈاک کی تمام رسیدیں اور وصولیاں محفوظ رکھیں",
     ],
   },
 ]

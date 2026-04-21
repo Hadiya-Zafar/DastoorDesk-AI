@@ -5,12 +5,19 @@ import { ArrowRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { DepartmentIcon } from "@/components/department-icon"
 import type { LegalDepartment } from "@/lib/legal-departments"
+import { useLanguage } from "@/context/LanguageContext"
 
 interface DepartmentCardProps {
   department: LegalDepartment
 }
 
 export function DepartmentCard({ department }: DepartmentCardProps) {
+  const { language } = useLanguage()
+
+  const name        = language === "ur" ? department.nameUr        : department.name
+  const description = language === "ur" ? department.descriptionUr : department.description
+  const examples    = language === "ur" ? department.examplesUr    : department.examples
+
   return (
     <Link href={`/chat/${department.id}`} className="block h-full group">
       <Card className="group relative h-full cursor-pointer overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 bg-card/40 backdrop-blur-md border border-white/[0.08] hover:border-primary/50 hover:bg-card/60">
@@ -22,18 +29,18 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
             <DepartmentIcon name={department.iconName} className={`h-5 w-5 text-primary transition-colors`} />
           </div>
           <CardTitle className="flex items-center justify-between text-lg tracking-tight font-medium group-hover:text-primary transition-colors text-foreground">
-            {department.name}
+            {name}
             <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 group-hover:text-primary" />
           </CardTitle>
           <CardDescription className="text-sm font-normal text-muted-foreground leading-relaxed mt-2">
-            {department.description}
+            {description}
           </CardDescription>
         </CardHeader>
         <CardContent className="relative pt-0 z-10">
           <div className="space-y-3">
             <div className="h-px w-full bg-gradient-to-r from-border to-transparent" />
             <ul className="space-y-2 mt-2">
-              {department.examples.map((example, index) => (
+              {examples.map((example, index) => (
                 <li
                   key={index}
                   className="flex items-start gap-3 text-xs font-normal text-muted-foreground/80 group-hover:text-foreground transition-colors"
